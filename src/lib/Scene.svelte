@@ -3,7 +3,7 @@
   import type { Rotation } from "@threlte/core";
   import { OrbitControls, T, useFrame } from "@threlte/core";
   import { Environment, Text, HTML } from "@threlte/extras";
-  import { degToRad } from "three/src/math/MathUtils";
+  import LaminaMesh from "$lib/LaminaMesh.svelte";
 
   const text = "hi";
   let camera: PerspectiveCamera;
@@ -15,31 +15,25 @@
 
 <Environment
   path="/"
-  files="bball.hdr"
+  files="nebula_low_res.hdr"
   isBackground={true}
   format="hdr"
-  groundProjection={{
-    radius: 75,
-    height: 5,
-    scale: { x: 200, y: 200, z: 200 },
-  }}
 />
+
+<T.AmbientLight intensity={0.15} />
 
 <T.PerspectiveCamera
   makeDefault
   position={[0, 3, 5]}
-  fov={75}
+  fov={90}
   bind:ref={camera}
 >
-  <OrbitControls
-    maxPolarAngle={degToRad(85)}
-    minPolarAngle={degToRad(10)}
-    enableDamping
-    target={{ y: 0.5 }}
-  />
+  <OrbitControls enableDamping target={{ y: 0.5 }} />
 </T.PerspectiveCamera>
 
-<T.Group>
+<LaminaMesh />
+
+<!-- <T.Group>
   <Text
     {text}
     position={{ y: 2.7 }}
@@ -58,4 +52,4 @@
       envMapIntensity={0.5}
     />
   </T.Mesh>
-</T.Group>
+</T.Group> -->
