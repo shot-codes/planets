@@ -3,6 +3,7 @@
     text: string;
     position: Position;
     rigidBody?: RapierRigidBody | undefined;
+    mesh?: Mesh | undefined;
   };
 </script>
 
@@ -12,7 +13,7 @@
   import { RigidBody, Collider, Attractor } from "@threlte/rapier";
   import type { RigidBody as RapierRigidBody } from "@dimforge/rapier3d-compat";
   import { LayerMaterial, Fresnel } from "lamina/vanilla";
-  import { Color } from "three";
+  import { Color, Mesh } from "three";
   import { Text } from "@threlte/extras";
   import { get } from "svelte/store";
 
@@ -20,6 +21,7 @@
   export let rotation: Rotation | undefined = undefined;
   export let text: string | undefined;
   export let rigidBody: RapierRigidBody | undefined;
+  export let mesh: Mesh | undefined;
 
   let cameraRotation: Rotation;
 
@@ -60,7 +62,7 @@
       textAlign="center"
       anchorX="center"
     />
-    <T.Mesh material={laminaMaterial}>
+    <T.Mesh material={laminaMaterial} bind:ref={mesh}>
       <T.SphereGeometry />
       <Collider
         contactForceEventThreshold={30}
@@ -68,7 +70,7 @@
         shape={"ball"}
         args={[1]}
       />
-      <Attractor range={10} strength={-1} />
+      <Attractor range={5} strength={-1} />
     </T.Mesh>
   </T.Group>
 </RigidBody>

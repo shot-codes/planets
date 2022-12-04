@@ -4,11 +4,12 @@
   import { RigidBody, Collider } from "@threlte/rapier";
   import type { RigidBody as RapierRigidBody } from "@dimforge/rapier3d-compat";
   import { LayerMaterial, Fresnel } from "lamina/vanilla";
-  import { Color } from "three";
+  import { Color, Mesh } from "three";
 
   export let position: Position | undefined = undefined;
   export let rotation: Rotation | undefined = undefined;
   export let rigidBody: RapierRigidBody | undefined = undefined;
+  export let mesh: Mesh | undefined;
 
   const laminaMaterial = new LayerMaterial({
     color: "#ffffff",
@@ -35,8 +36,8 @@
   linearDamping={2}
 >
   <T.Group>
-    <T.Mesh material={laminaMaterial}>
-      <T.SphereGeometry />
+    <T.Mesh material={laminaMaterial} bind:ref={mesh}>
+      <T.SphereGeometry args={[3]} />
       <Collider
         contactForceEventThreshold={30}
         restitution={0.4}
