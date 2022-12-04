@@ -1,16 +1,7 @@
 <script lang="ts">
-  import type { PerspectiveCamera } from "three";
-  import type { Rotation } from "@threlte/core";
-  import { OrbitControls, T, useFrame } from "@threlte/core";
-  import { Environment, Text, HTML } from "@threlte/extras";
-  import LaminaMesh from "$lib/LaminaMesh.svelte";
-
-  const text = "hi";
-  let camera: PerspectiveCamera;
-  let camera_rotation: Rotation;
-  useFrame(() => {
-    camera_rotation = camera.rotation;
-  });
+  import { OrbitControls, T } from "@threlte/core";
+  import { Environment } from "@threlte/extras";
+  import PlanetGroup from "$lib/PlanetGroup.svelte";
 </script>
 
 <Environment
@@ -22,34 +13,8 @@
 
 <T.AmbientLight intensity={0.15} />
 
-<T.PerspectiveCamera
-  makeDefault
-  position={[0, 3, 5]}
-  fov={90}
-  bind:ref={camera}
->
+<T.PerspectiveCamera makeDefault position={[0, 3, 40]} fov={90}>
   <OrbitControls enableDamping target={{ y: 0.5 }} />
 </T.PerspectiveCamera>
 
-<LaminaMesh />
-
-<!-- <T.Group>
-  <Text
-    {text}
-    position={{ y: 2.7 }}
-    rotation={camera_rotation}
-    scale={5}
-    textAlign="center"
-    anchorX="center"
-  />
-  <T.Mesh castShadow receiveShadow position.y={1}>
-    <T.SphereGeometry />
-
-    <T.MeshStandardMaterial
-      color="#ffffff"
-      metalness={0.9}
-      roughness={0.05}
-      envMapIntensity={0.5}
-    />
-  </T.Mesh>
-</T.Group> -->
+<PlanetGroup />

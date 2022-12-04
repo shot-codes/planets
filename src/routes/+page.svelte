@@ -1,16 +1,14 @@
 <script>
   import { Canvas } from "@threlte/core";
-  import { World } from "@threlte/rapier";
-  import { spring } from "svelte/motion";
+  import { World, Debug } from "@threlte/rapier";
   import Scene from "$lib/Scene.svelte";
   import { HTML } from "@threlte/extras";
-
-  const scale = spring(1);
 </script>
 
 <div>
   <Canvas>
-    <World>
+    <World gravity={{ y: 0 }}>
+      <Debug />
       <Scene />
       <HTML slot="fallback" transform>
         <p>No WASM? 😑</p>
