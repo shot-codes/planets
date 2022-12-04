@@ -28,7 +28,7 @@
     },
     {
       text: "hello",
-      position: { x: 30, y: 10, z: -30 },
+      position: { x: -28, y: 10, z: -30 },
     },
     {
       text: "there",
@@ -38,12 +38,15 @@
 
   useFrame(() => {
     coreMesh?.getWorldPosition(corePosition);
-    planets[0].mesh?.getWorldPosition(planetPosition);
-    const diff = corePosition.sub(planetPosition).divideScalar(20);
-    const f = diff.clamp(min, max);
-    if (diff.length() > 0.5) {
-      planets[0].rigidBody?.applyImpulse(f, true);
-    }
+
+    planets.forEach((planet) => {
+      planet.mesh?.getWorldPosition(planetPosition);
+      const diff = corePosition.sub(planetPosition).divideScalar(20);
+      const f = diff.clamp(min, max);
+      if (diff.length() > 0.5) {
+        planet.rigidBody?.applyImpulse(f, true);
+      }
+    });
   });
 </script>
 
