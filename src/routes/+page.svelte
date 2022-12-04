@@ -7,7 +7,7 @@
 
 <div>
   <Canvas>
-    <World gravity={{ y: 0 }}>
+    <World gravity={{ y: -10 }}>
       <Debug />
       <Scene />
       <HTML slot="fallback" transform>
