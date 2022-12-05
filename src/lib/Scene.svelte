@@ -6,39 +6,39 @@
 
   let planetGroup1: PlanetType[] = [
     {
-      text: "hello",
-      position: { x: -30, y: 10, z: 30 },
+      text: "1",
+      position: { x: 103, y: 103, z: 103 },
     },
     {
-      text: "there",
-      position: { x: 30, y: -10, z: 30 },
+      text: "2",
+      position: { x: 97, y: 97, z: 97 },
     },
     {
-      text: "hello",
-      position: { x: -28, y: 10, z: -30 },
+      text: "3",
+      position: { x: 100, y: 100, z: 100 },
     },
     {
-      text: "there",
-      position: { x: -30, y: -10, z: -30 },
+      text: "4",
+      position: { x: 100, y: 100, z: 100 },
     },
   ];
 
   let planetGroup2: PlanetType[] = [
     {
-      text: "hello",
-      position: { x: -30, y: 10, z: 30 },
+      text: "10",
+      position: { x: 100, y: 100, z: 100 },
     },
     {
-      text: "there",
-      position: { x: 30, y: -10, z: 30 },
+      text: "20",
+      position: { x: 100, y: 100, z: 100 },
     },
     {
-      text: "hello",
-      position: { x: -28, y: 10, z: -30 },
+      text: "30",
+      position: { x: 100, y: 100, z: 100 },
     },
     {
-      text: "there",
-      position: { x: -30, y: -10, z: -30 },
+      text: "40",
+      position: { x: 100, y: 100, z: 100 },
     },
   ];
 </script>
@@ -57,3 +57,5 @@
 </T.PerspectiveCamera>
 
 <PlanetGroup planets={planetGroup1} position={[0, 0, 0]} />
+
+<!-- <PlanetGroup planets={planetGroup2} position={[100, 100, 100]} /> -->
